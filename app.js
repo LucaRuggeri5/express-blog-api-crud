@@ -4,18 +4,20 @@ const express = require('express')
 const app = express()
 // porta del localhost
 const port = 3000
+
 // chiamata di posts.js
 const postsRouter = require('./routers/posts')
+
 // rendo statica la cartella public
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('<h1>Ricette della nonna!</h1>')
 })
 
+// rotte dei posts
 app.use('/posts', postsRouter)
 
-
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Potrai trovare ciò che cerchi alla porta: ${port}`)
 })

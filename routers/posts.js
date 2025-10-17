@@ -1,36 +1,21 @@
 // dichiaro il framework di express
 const express = require('express')
-
+// setto il router
 const router = express.Router();
+// importiamo il controller
+const postsController = require('../controllers/postsController')
 
 // index
-router.get('/', function (req, res) {
-  res.send('Lista delle ricette');
-})
-
+router.get('/', postsController.index);
 // show
-router.get('/:id', function (req,res) {
-  res.send('Ricetta numero' + req.params.id);
-})
-
+router.get('/:id', postsController.show);
 // store
-router.post('/', function (req, res) {
-  res.send('Creazione delle ricette');
-})
-
+router.post('/', postsController.store);
 // update
-router.put('/:id', function (req,res) {
-  res.send('Modifica integrale della ricetta' + req.params.id);
-})
-
+router.put('/:id', postsController.update);
 // update(modify)
-router.patch('/:id', function (req,res) {
-  res.send('Modifica parziale della ricetta' + req.params.id);
-})
-
+router.patch('/:id', postsController.modify);
 // delete
-router.delete('/:id', function (req,res) {
-  res.send('Eliminazione della ricetta' + req.params.id);
-})
+router.delete('/:id', postsController.destroy);
 
 module.exports = router
